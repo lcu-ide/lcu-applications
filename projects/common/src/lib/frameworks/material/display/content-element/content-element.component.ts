@@ -22,7 +22,7 @@ export const SELECTOR_CONTENT_ELEMENT = 'lcu-content-element';
   templateUrl: './content-element.component.html',
   styleUrls: ['./content-element.component.scss']
 })
-export class ContentElementComponent extends LcuElementComponent<ContentElementContext> {
+export class ContentElementComponent extends LcuElementComponent<ContentElementContext> implements OnChanges, OnInit {
   //  Properties
 
   //  Constructors
@@ -31,4 +31,13 @@ export class ContentElementComponent extends LcuElementComponent<ContentElementC
   }
 
   //  Life Cycle
+  public ngOnChanges() {
+    console.log(this.Context);
+  }
+
+  public ngOnInit() {
+    super.ngOnInit();
+
+    console.log(this.Context);
+  }
 }

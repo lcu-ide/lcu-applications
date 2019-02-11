@@ -1,3 +1,3 @@
-<p>
-  shared-element works!
-</p>
+<ng-container *ngIf="Active">
+    <lcu-lazy-element [config]="Active" [data]="Context"></lcu-lazy-element>
+</ng-container>
