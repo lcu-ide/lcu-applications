@@ -1,0 +1,8 @@
+<ng-container *ngIf="Context && Context.State && Context.State.Type">
+  <lcu-content
+    [type]="Context.State.Type"
+    [content]="Context.State.Content"
+    [content-class]="Context.State.Class"
+    [modifier]="Context.State.Modifier"
+  ></lcu-content>
+</ng-container>
