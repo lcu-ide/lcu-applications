@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Injector, OnChanges } from '@angular/core';
-import { LcuElementComponent } from '../../lcu-element.component';
+import { LcuElementComponent, LCUElementContext } from '@lcu-ide/common';
 
 export class ContentElementState {
   public Class?: string;
@@ -11,8 +11,8 @@ export class ContentElementState {
   public Type: string;
 }
 
-export class ContentElementContext {
-  public State: ContentElementState;
+//  TODO:  Need to do this base extension for everything
+export class ContentElementContext extends LCUElementContext<ContentElementState> {
 }
 
 export const SELECTOR_CONTENT_ELEMENT = 'lcu-content-element';
