@@ -12,8 +12,7 @@ export class ContentElementState {
 }
 
 //  TODO:  Need to do this base extension for everything
-export class ContentElementContext extends LCUElementContext<ContentElementState> {
-}
+export class ContentElementContext extends LCUElementContext<ContentElementState> {}
 
 export const SELECTOR_CONTENT_ELEMENT = 'lcu-content-element';
 

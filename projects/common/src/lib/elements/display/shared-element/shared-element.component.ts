@@ -1,21 +1,21 @@
 import { Component, Injector } from '@angular/core';
+import { LCUElementContext, LcuElementComponent } from '@lcu-ide/common';
 import { LazyElementConfig } from '@lowcodeunit/lazy-element';
-import { LcuElementComponent } from '../../lcu-element.component';
 
 export class SharedElementState {
   public Element: LazyElementConfig;
 }
 
-export class SharedElementContext {
-  public State: SharedElementState;
-}
+export class SharedElementContext extends LCUElementContext<SharedElementState> {}
+
+export const SELECTOR_SHARED_ELEMENT = 'lcu-shared-element';
 
 @Component({
-  selector: 'lcu-shared-element',
+  selector: SELECTOR_SHARED_ELEMENT,
   templateUrl: './shared-element.component.html',
   styleUrls: ['./shared-element.component.scss']
 })
-export class SharedElementComponent  extends LcuElementComponent<SharedElementContext> {
+export class SharedElementComponent extends LcuElementComponent<SharedElementContext> {
   //  Fields
 
   //  Properties
