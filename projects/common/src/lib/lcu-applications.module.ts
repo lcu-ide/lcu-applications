@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { LazyElementModule } from '@lowcodeunit/lazy-element';
 import { FathymSharedModule } from '@lcu-ide/common';
 import { ContentElementComponent } from './elements/display/content-element/content-element.component';
@@ -10,38 +10,47 @@ import { LcuMaterialApplicationsModule } from './frameworks/material/lcu-materia
 import { ActionElementComponent } from './elements/display/action-element/action-element.component';
 import { StackedElementComponent } from './elements/layout/stacked-element/stacked-element.component';
 import { SwitchCaseElementComponent } from './elements/layout/switch-case-element/switch-case-element.component';
+import { LcuAppsStateManagerContext } from './state/lcu-apps-state-manager.context';
+import { AppsManagerComponent } from './controls/ide/apps-manager/apps-manager.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppsManagerElementComponent } from './elements/ide/apps-manager-element/apps-manager-element.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+const comps = [
+  ContentElementComponent,
+  SharedElementComponent,
+  ContentComponent,
+  FlexComponent,
+  FlexElementComponent,
+  ActionElementComponent,
+  StackedElementComponent,
+  SwitchCaseElementComponent,
+  AppsManagerComponent,
+  AppsManagerElementComponent
+];
 
 @NgModule({
-  declarations: [
-    ContentElementComponent,
-    SharedElementComponent,
-    ContentComponent,
-    FlexComponent,
-    FlexElementComponent,
-    ActionElementComponent,
-    StackedElementComponent,
-    SwitchCaseElementComponent
+  declarations: [...comps],
+  imports: [
+    FathymSharedModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    LcuMaterialApplicationsModule,
+    LazyElementModule
   ],
-  imports: [FathymSharedModule, LcuMaterialApplicationsModule, LazyElementModule],
-  exports: [
-    ContentElementComponent,
-    SharedElementComponent,
-    ContentComponent,
-    FlexComponent,
-    FlexElementComponent,
-    ActionElementComponent,
-    StackedElementComponent,
-    SwitchCaseElementComponent
-  ],
-  entryComponents: [
-    ContentElementComponent,
-    SharedElementComponent,
-    ContentComponent,
-    FlexComponent,
-    FlexElementComponent,
-    ActionElementComponent,
-    StackedElementComponent,
-    SwitchCaseElementComponent
-  ]
+  exports: [...comps],
+  entryComponents: [...comps]
 })
-export class LcuApplicationsModule {}
+export class LcuApplicationsModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: LcuApplicationsModule,
+      providers: [LcuAppsStateManagerContext]
+    };
+  }
+}

@@ -7,18 +7,30 @@ import {
   MatButtonModule,
   MatInputModule,
   MatAutocompleteModule,
-  MatIconModule
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatCardModule,
+  MatExpansionModule
 } from '@angular/material';
 import { FathymSharedModule } from '@lcu-ide/common';
 
 const modules = [
   FlexLayoutModule,
+  MatExpansionModule,
   MatAutocompleteModule,
   MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
+  MatProgressSpinnerModule,
   MatSelectModule,
+  MatSidenavModule,
+  MatTabsModule,
   MatToolbarModule,
 ];
 
