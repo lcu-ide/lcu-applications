@@ -7,7 +7,7 @@
     "config": {
       "wc": ["lcu-applications.lcu.js"],
       "solutions": {
-        "lcu-state": {
+        "lcu-applications": {
           "element": "lcu-apps-manager-element"
         }
       },
