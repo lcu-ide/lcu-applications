@@ -5,7 +5,7 @@
         "workspace": "lcu-applications"
     },
     "config": {
-      "wc": ["lcu-applications.lcu.js"],
+      "wc": ["wc/lcu-applications.lcu.js"],
       "solutions": {
         "lcu-applications": {
           "element": "lcu-apps-manager-element"
