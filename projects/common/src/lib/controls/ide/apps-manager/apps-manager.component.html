@@ -43,6 +43,8 @@
             <div>
               <h2>Managing {{ State.ActiveApp.Name }}</h2>
 
+              <h3>App ID: {{ State.ActiveApp.ID }}</h3>
+
               <mat-tab-group>
                 <mat-tab label="Application Type">
                   <div fxLayout="row wrap" fxLayoutAlign="center center" *ngIf="!State.ActiveAppType">
@@ -194,6 +196,10 @@
                       <input matInput placeholder="Path (regex)" formControlName="path" />
                     </mat-form-field>
 
+                    <mat-form-field class="mat-full-width">
+                      <input matInput placeholder="Priority" formControlName="priority" />
+                    </mat-form-field>
+
                     <div class="state-actions">
                       <button type="submit" mat-raised-button color="primary">Save Application</button>
 
@@ -219,6 +225,10 @@
 
               <mat-form-field class="mat-full-width">
                 <input matInput placeholder="Path (regex)" formControlName="path" required />
+              </mat-form-field>
+
+              <mat-form-field class="mat-full-width">
+                <input matInput placeholder="Priority" formControlName="priority" />
               </mat-form-field>
 
               <div class="state-actions">

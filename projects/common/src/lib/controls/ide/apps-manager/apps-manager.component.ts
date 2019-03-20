@@ -102,13 +102,11 @@ export class AppsManagerComponent implements OnChanges, OnInit {
 
           this.SaveAppFormGroup.controls.path.setValue(this.State.ActiveApp.PathRegex);
 
+          this.SaveAppFormGroup.controls.priority.setValue(this.State.ActiveApp.Priority);
+
           this.SaveAppFormGroup.controls.desc.setValue(this.State.ActiveApp.Description);
         } else if (this.SaveAppFormGroup) {
-          this.SaveAppFormGroup.controls.name.setValue('');
-
-          this.SaveAppFormGroup.controls.path.setValue('');
-
-          this.SaveAppFormGroup.controls.desc.setValue('');
+          this.SaveAppFormGroup.reset();
         }
       }
 
@@ -120,11 +118,7 @@ export class AppsManagerComponent implements OnChanges, OnInit {
 
           this.DAFViewAppFormGroup.controls.pkgVer.setValue(this.ActiveDAFViewApp.PackageVersion);
         } else if (this.DAFViewAppFormGroup) {
-          this.DAFViewAppFormGroup.controls.baseHref.setValue('');
-
-          this.DAFViewAppFormGroup.controls.npmPkg.setValue('');
-
-          this.DAFViewAppFormGroup.controls.pkgVer.setValue('');
+          this.DAFViewAppFormGroup.reset();
         }
       }
     }
@@ -134,7 +128,8 @@ export class AppsManagerComponent implements OnChanges, OnInit {
     this.SaveAppFormGroup = this.formBldr.group({
       name: ['', Validators.required],
       desc: ['', Validators.required],
-      path: ['', Validators.required]
+      path: ['', Validators.required],
+      priority: ['', Validators.required]
     });
 
     this.DAFViewAppFormGroup = this.formBldr.group({
@@ -159,7 +154,8 @@ export class AppsManagerComponent implements OnChanges, OnInit {
       ...(this.State.ActiveApp || {}),
       Name: this.SaveAppFormGroup.controls.name.value,
       Description: this.SaveAppFormGroup.controls.desc.value,
-      PathRegex: this.SaveAppFormGroup.controls.path.value
+      PathRegex: this.SaveAppFormGroup.controls.path.value,
+      Priority: this.SaveAppFormGroup.controls.priority.value
     });
   }
 

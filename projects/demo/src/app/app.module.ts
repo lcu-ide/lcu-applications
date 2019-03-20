@@ -3,21 +3,17 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LcuApplicationsModule } from '@lcu-ide/lcu-applications-common';
-import { RealTimeService, LCUServiceSettings } from '@lcu-ide/common';
+import { FathymSharedModule, LCUServiceSettings } from '@lcu-ide/common';
+import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, LcuApplicationsModule.forRoot()],
+  imports: [FathymSharedModule.forRoot(), BrowserModule, BrowserAnimationsModule, LcuApplicationsModule.forRoot()],
   providers: [
-    RealTimeService,
     {
       provide: LCUServiceSettings,
-      useValue: <LCUServiceSettings>{
-        APIRoot: `http://localhost:52235`
-        // APIRoot: `http://www.lowcodeunit.com`,
-        // APIRoot: `http://5280.lowcodeunit.com`,
-        // APIRoot: ``,
-      }
+      useValue: FathymSharedModule.DefaultServiceSettings(environment)
     }
   ],
   bootstrap: [AppComponent]
