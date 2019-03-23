@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const settings = FathymSharedModule.DefaultServiceSettings(environment);
 
-// settings.APIRoot = 'http://www.lowcodeunit.com';
+settings.APIRoot = 'http://www.lowcodeunit.com';
 // settings.APIRoot = 'http://www.pizzapedalr.com';
 
 @NgModule({
