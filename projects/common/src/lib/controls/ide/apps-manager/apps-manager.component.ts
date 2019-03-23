@@ -166,6 +166,10 @@ export class AppsManagerComponent implements OnChanges, OnInit {
   }
 
   public SaveDAFViewApp() {
+    if (!this.State.ActiveDAFApps || this.State.ActiveDAFApps.length === 0) {
+      this.State.ActiveDAFApps.push({});
+    }
+
     this.ActiveDAFViewApp.BaseHref = this.DAFViewAppFormGroup.controls.baseHref.value;
 
     this.ActiveDAFViewApp.NPMPackage = this.DAFViewAppFormGroup.controls.npmPkg.value;
