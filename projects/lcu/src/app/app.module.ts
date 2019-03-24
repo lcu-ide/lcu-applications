@@ -3,7 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppsManagerElementComponent, SELECTOR_APPS_MANAGER_ELEMENT } from '@lcu-ide/lcu-applications-common';
+import {
+  AppsManagerElementComponent,
+  SELECTOR_APPS_MANAGER_ELEMENT,
+  ContentElementComponent,
+  SELECTOR_CONTENT_ELEMENT
+} from '@lcu-ide/lcu-applications-common';
 import { LcuApplicationsModule } from '@lcu-ide/lcu-applications-common';
 
 @NgModule({
@@ -16,8 +21,12 @@ export class AppModule implements DoBootstrap {
 
   //  Life Cycle
   public ngDoBootstrap() {
-    const panel = createCustomElement(AppsManagerElementComponent, { injector: this.injector });
+    const panel = createCustomElement(ContentElementComponent, { injector: this.injector });
 
-    customElements.define(SELECTOR_APPS_MANAGER_ELEMENT, panel);
+    customElements.define(SELECTOR_CONTENT_ELEMENT, panel);
+
+    const appsMgf = createCustomElement(AppsManagerElementComponent, { injector: this.injector });
+
+    customElements.define(SELECTOR_APPS_MANAGER_ELEMENT, appsMgf);
   }
 }
