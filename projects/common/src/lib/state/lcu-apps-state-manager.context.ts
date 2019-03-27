@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { StateManagerContext } from '@lcu-ide/common';
-import { LCUAppsState, LCUAppConfig, LCUDAFAppConfig, LCUDAFAPIAppConfig } from './lcu-apps-state.model';
+import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu-ide/common';
+import { LCUAppsState } from './lcu-apps-state.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
   }
 
   //  API Methods
-  public AddDAFAPIConfig(app: LCUDAFAPIAppConfig) {
+  public AddDAFAPIConfig(app: DAFAPIApplicationConfig) {
     this.Execute({
       Arguments: {
         DAFApp: app
@@ -23,7 +24,7 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
     });
   }
 
-  public RemoveDAFAPIConfig(app: LCUDAFAPIAppConfig) {
+  public RemoveDAFAPIConfig(app: DAFAPIApplicationConfig) {
     this.Execute({
       Arguments: {
         DAFApp: app
@@ -32,7 +33,7 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
     });
   }
 
-  public Save(app: LCUAppConfig) {
+  public Save(app: Application) {
     this.Execute({
       Arguments: {
         Application: app
@@ -41,7 +42,7 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
     });
   }
 
-  public SaveDAFApps(dafApps: LCUDAFAppConfig[]) {
+  public SaveDAFApps(dafApps: DAFApplicationConfig[]) {
     this.Execute({
       Arguments: {
         DAFApps: dafApps

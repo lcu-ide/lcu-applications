@@ -1,7 +1,8 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { LCUElementContext, LcuElementComponent } from '@lcu-ide/common';
 import { LcuAppsStateManagerContext } from '../../../state/lcu-apps-state-manager.context';
-import { LCUAppsState, LCUAppConfig, LCUDAFAPIAppConfig, LCUDAFAppConfig } from '../../../state/lcu-apps-state.model';
+import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu-ide/common';
+import { LCUAppsState } from '../../../state/lcu-apps-state.model';
 
 export class AppsManagerElementState {
   public Config: LCUAppsState;
@@ -35,25 +36,25 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
   }
 
   //  API Methods
-  public AddAPI(apiApp: LCUDAFAPIAppConfig) {
+  public AddAPI(apiApp: DAFAPIApplicationConfig) {
     this.State.Loading = true;
 
     this.state.AddDAFAPIConfig(apiApp);
   }
 
-  public RemoveAPI(apiApp: LCUDAFAPIAppConfig) {
+  public RemoveAPI(apiApp: DAFAPIApplicationConfig) {
     this.State.Loading = true;
 
     this.state.RemoveDAFAPIConfig(apiApp);
   }
 
-  public SaveApp(app: LCUAppConfig) {
+  public SaveApp(app: Application) {
     this.State.Loading = true;
 
     this.state.Save(app);
   }
 
-  public SaveDAFApps(dafApps: LCUDAFAppConfig[]) {
+  public SaveDAFApps(dafApps: DAFApplicationConfig[]) {
     this.State.Loading = true;
 
     this.state.SaveDAFApps(dafApps);

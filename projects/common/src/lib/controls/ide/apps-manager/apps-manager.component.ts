@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, OnChanges, SimpleChanges, ViewChild, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDrawer } from '@angular/material';
-import { LCUAppsState, LCUAppConfig, LCUDAFViewAppConfig, LCUDAFAPIAppConfig, LCUDAFAppConfig } from '../../../state/lcu-apps-state.model';
+import { Application, DAFViewApplicationConfig, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu-ide/common';
+import { LCUAppsState } from '../../../state/lcu-apps-state.model';
 
 @Component({
   selector: 'lcu-apps-manager',
@@ -13,16 +14,16 @@ export class AppsManagerComponent implements OnChanges, OnInit {
   protected stateInit: boolean;
 
   //  Properties
-  public get ActiveDAFViewApp(): LCUDAFViewAppConfig {
+  public get ActiveDAFViewApp(): DAFViewApplicationConfig {
     return this.State.ActiveDAFApps && this.State.ActiveDAFApps.length > 0 ? this.State.ActiveDAFApps[0] : {};
   }
 
-  public get ActiveDAFAPIApps(): LCUDAFAPIAppConfig[] {
+  public get ActiveDAFAPIApps(): DAFAPIApplicationConfig[] {
     return this.State.ActiveDAFApps && this.State.ActiveDAFApps.length > 0 ? this.State.ActiveDAFApps : [];
   }
 
   @Output('add-api')
-  public AddAPI: EventEmitter<LCUDAFAPIAppConfig>;
+  public AddAPI: EventEmitter<DAFAPIApplicationConfig>;
 
   public DAFViewAppFormGroup: FormGroup;
 
@@ -38,15 +39,15 @@ export class AppsManagerComponent implements OnChanges, OnInit {
   public NewDAFAPISecurity: string;
 
   @Output('remove-api')
-  public RemoveAPI: EventEmitter<LCUDAFAPIAppConfig>;
+  public RemoveAPI: EventEmitter<DAFAPIApplicationConfig>;
 
   @Output('save-app')
-  public SaveApp: EventEmitter<LCUAppConfig>;
+  public SaveApp: EventEmitter<Application>;
 
   public SaveAppFormGroup: FormGroup;
 
   @Output('save-daf-apps')
-  public SaveDAFAppConfigs: EventEmitter<LCUDAFAppConfig[]>;
+  public SaveDAFAppConfigs: EventEmitter<DAFApplicationConfig[]>;
 
   public SavingApp: boolean;
 
@@ -159,7 +160,7 @@ export class AppsManagerComponent implements OnChanges, OnInit {
     });
   }
 
-  public RemoveDAFAPI(dafApi: LCUDAFAPIAppConfig) {
+  public RemoveDAFAPI(dafApi: DAFAPIApplicationConfig) {
     if (confirm(`Are you sure you want to remove the api config @ '${dafApi.InboundPath}' for '${dafApi.APIRoot}'?`)) {
       this.RemoveAPI.emit(dafApi);
     }
