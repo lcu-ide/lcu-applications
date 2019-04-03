@@ -9,5 +9,11 @@ export class LCUAppsState {
 
   public Apps: Application[];
 
+  public DefaultApps: Application[];
+
+  public DefaultAppsEnabled?: boolean;
+
+  public IsAppsSettings?: boolean;
+
   public Loading?: boolean;
 }

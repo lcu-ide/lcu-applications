@@ -11,7 +11,6 @@ import { ActionElementComponent } from './elements/display/action-element/action
 import { StackedElementComponent } from './elements/layout/stacked-element/stacked-element.component';
 import { SwitchCaseElementComponent } from './elements/layout/switch-case-element/switch-case-element.component';
 import { LcuAppsStateManagerContext } from './state/lcu-apps-state-manager.context';
-import { AppsManagerComponent } from './controls/ide/apps-manager/apps-manager.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppsManagerElementComponent } from './elements/ide/apps-manager-element/apps-manager-element.component';
@@ -27,7 +26,6 @@ const comps = [
   ActionElementComponent,
   StackedElementComponent,
   SwitchCaseElementComponent,
-  AppsManagerComponent,
   AppsManagerElementComponent
 ];
 

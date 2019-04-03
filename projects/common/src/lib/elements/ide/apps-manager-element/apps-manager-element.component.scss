@@ -1,0 +1,35 @@
+.lcu-apps-manager {
+  height: 100%;
+
+  .state-drawer {
+    height: calc(100% - 64px);
+  }
+
+  .state-content {
+    padding: 2rem;
+  }
+
+  .state-actions {
+    padding: 2rem;
+    text-align: right;
+  }
+
+  h2 {
+    .mat-chip-list {
+      display: inline-block;
+    }
+  }
+  .mat-drawer,
+  .mat-drawer-container,
+  .mat-toolbar {
+    background-color: transparent;
+  }
+
+  .mat-card {
+    margin: 2rem;
+
+    .mat-subtitle {
+      margin: 1rem;
+    }
+  }
+}

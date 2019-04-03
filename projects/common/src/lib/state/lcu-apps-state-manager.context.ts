@@ -69,6 +69,32 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
     });
   }
 
+  public SetDefaultApps(state: boolean) {
+    this.Execute({
+      Arguments: {
+        State: state
+      },
+      Type: 'set-default-apps'
+    });
+  }
+
+  public ToggleAppAsDefault(appId: string, isAdd: boolean) {
+    this.Execute({
+      Arguments: {
+        AppID: appId,
+        IsAdd: isAdd
+      },
+      Type: 'toggle-app-as-default'
+    });
+  }
+
+  public ToggleAppsSettings() {
+    this.Execute({
+      Arguments: {},
+      Type: 'toggle-apps-settings'
+    });
+  }
+
   //  Helpers
   protected defaultValue() {
     return <LCUAppsState>{ Loading: true };

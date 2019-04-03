@@ -13,7 +13,9 @@ import {
   MatProgressSpinnerModule,
   MatTabsModule,
   MatCardModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatChipsModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { FathymSharedModule } from '@lcu-ide/common';
 
@@ -23,6 +25,8 @@ const modules = [
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -31,7 +35,7 @@ const modules = [
   MatSelectModule,
   MatSidenavModule,
   MatTabsModule,
-  MatToolbarModule,
+  MatToolbarModule
 ];
 
 @NgModule({
