@@ -5,6 +5,9 @@ import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu
 import { LCUAppsState } from '../../../state/lcu-apps-state.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDrawer, MatCheckboxChange } from '@angular/material';
+import { DropListRef, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { debounceTime, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 export class AppsManagerElementState {
   public Config: LCUAppsState;
@@ -21,6 +24,8 @@ export const SELECTOR_APPS_MANAGER_ELEMENT = 'lcu-apps-manager-element';
 })
 export class AppsManagerElementComponent extends LcuElementComponent<AppsManagerContext> implements OnInit {
   //  Fields
+  protected dropSub: Subscription;
+
   protected stateInit: boolean;
 
   //  Properties
@@ -36,6 +41,9 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
 
   @ViewChild(MatDrawer)
   public Drawer: MatDrawer;
+
+  @ViewChild(DropListRef)
+  public Drops: DropListRef;
 
   public NewDAFAPIAPIRoot: string;
 
@@ -100,6 +108,10 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
     this.state.AddDAFAPIConfig(apiApp);
   }
 
+  public AppPriorityDrop(event: CdkDragDrop<Application, any>) {
+    moveItemInArray(this.State.AppPriorities, event.previousIndex, event.currentIndex);
+  }
+
   public IsDefaultApp(appId: string) {
     return this.State.DefaultApps && this.State.DefaultApps.some(da => da.ID === appId);
   }
@@ -122,6 +134,12 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
       PathRegex: this.SaveAppFormGroup.controls.path.value,
       Priority: this.SaveAppFormGroup.controls.priority.value
     });
+  }
+
+  public SaveAppPriorities() {
+    this.State.Loading = true;
+
+    this.state.SavePriorities(this.State.AppPriorities);
   }
 
   public SaveDAFAPIApps() {
@@ -154,6 +172,12 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
     this.State.Loading = true;
 
     this.state.SetActiveAppType(appType);
+  }
+
+  public SetAppsNavState(state: string) {
+    this.State.Loading = true;
+
+    this.state.SetAppsNavState(state);
   }
 
   public SetDefaultApps(state: boolean) {
@@ -190,6 +214,19 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
 
       this.stateInit = true;
     }
+
+    // if (!this.dropSub && this.Drops) {
+    //   this.dropSub = this.Drops.dropped
+    //     .pipe(
+    //       map(event => {
+    //         moveItemInArray(this.State.Apps, event.previousIndex, event.currentIndex);
+    //       }),
+    //       debounceTime(1250)
+    //     )
+    //     .subscribe(event => {
+    //       console.log(this.State.Apps);
+    //     });
+    // }
 
     this.NewDAFAPIAPIRoot = '';
 

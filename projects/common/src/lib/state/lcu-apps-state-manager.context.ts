@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { StateManagerContext } from '@lcu-ide/common';
 import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu-ide/common';
-import { LCUAppsState } from './lcu-apps-state.model';
+import { LCUAppsState, AppPriorityModel } from './lcu-apps-state.model';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +51,15 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
     });
   }
 
+  public SavePriorities(apps: AppPriorityModel[]) {
+    this.Execute({
+      Arguments: {
+        Apps: apps
+      },
+      Type: 'save-app-priorities'
+    });
+  }
+
   public SetActive(appId: string) {
     this.Execute({
       Arguments: {
@@ -66,6 +75,15 @@ export class LcuAppsStateManagerContext extends StateManagerContext<LCUAppsState
         Type: appType
       },
       Type: 'set-active-app-type'
+    });
+  }
+
+  public SetAppsNavState(state: string) {
+    this.Execute({
+      Arguments: {
+        State: state
+      },
+      Type: 'set-apps-nav-state'
     });
   }
 

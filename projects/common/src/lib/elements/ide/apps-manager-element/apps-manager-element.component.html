@@ -13,9 +13,28 @@
     </a>
   </mat-toolbar>
 
-  <mat-drawer-container class="state-drawer">
-    <mat-drawer mode="side" #drawer closed>
-      <mat-nav-list *ngIf="!State.Loading">
+  <mat-drawer-container class="state-drawer" autosize>
+    <mat-drawer mode="side" #drawer closed [class.priority]="State.AppsNavState == 'Prioritizing'">
+      <mat-nav-list cdkDropList *ngIf="State.AppsNavState == 'Prioritizing'" (cdkDropListDropped)="AppPriorityDrop($event)">
+        <mat-list-item
+          cdkDrag
+          *ngFor="let app of State.AppPriorities"
+          [class.active]="app.AppID == State.ActiveApp?.ID"
+          [cdkDragDisabled]="app.IsDefault"
+        >
+          <a matLine>
+            {{ app.Name }}
+
+            <small>({{ app.Path }})</small>
+          </a>
+
+          <mat-icon matListIcon *ngIf="!app.IsDefault">drag_indicator</mat-icon>
+
+          <mat-icon matListIcon *ngIf="app.IsDefault">lock</mat-icon>
+        </mat-list-item>
+      </mat-nav-list>
+
+      <mat-nav-list *ngIf="State.AppsNavState != 'Prioritizing'">
         <mat-list-item [class.active]="app.ID == State.ActiveApp?.ID" *ngFor="let app of State.Apps">
           <a matLine (click)="Select(app.ID)">{{ app.Name }}</a>
         </mat-list-item>
@@ -257,17 +276,43 @@
 
       <div class="state-content" *ngIf="State.IsAppsSettings">
         <ng-container *ngIf="!State.Loading">
-          <h2>Manage Applications Settings</h2>
+          <div *ngIf="State.AppsNavState != 'Prioritizing'">
+            <h2>Manage Applications Settings</h2>
 
-          <ng-container>
             <h3 *ngIf="State.DefaultAppsEnabled">Default Applications Enabled</h3>
 
-            <a mat-raised-button color="primary" (click)="SetDefaultApps(!State.DefaultAppsEnabled)" *ngIf="!State.DefaultAppsEnabled"
-              >Enable Default Applications</a
-            >
+            <div>
+              <a mat-raised-button color="primary" (click)="SetDefaultApps(!State.DefaultAppsEnabled)" *ngIf="!State.DefaultAppsEnabled">
+                Enable Default Applications
+              </a>
+            </div>
+
+            <div>
+              <a mat-raised-button color="accent" (click)="SetAppsNavState('Prioritizing')">
+                Prioritize Applications
+              </a>
+            </div>
             <!--
             <a mat-raised-button color="primary" (click)="SetDefaultApps(!State.DefaultAppsEnabled)" *ngIf="State.DefaultAppsEnabled">Disable Default Applications</a> -->
-          </ng-container>
+          </div>
+
+          <div *ngIf="State.AppsNavState == 'Prioritizing'">
+            <h2>
+              <a mat-icon-button color="warn" (click)="SetAppsNavState(null)">
+                <mat-icon>cancel</mat-icon>
+              </a>
+
+              Manage Application Prioritization
+            </h2>
+
+            <p class="mat-body-2">Some directions on prioritization...</p>
+
+            <p class="mat-body-2">TODO:  Use our Readme display control from @lowcodeunit to display a create readme in this repo for prioritization</p>
+
+            <a mat-raised-button color="primary" (click)="SaveAppPriorities()">
+              Save Prioritization
+            </a>
+          </div>
         </ng-container>
 
         <ng-container *ngIf="State.Loading">

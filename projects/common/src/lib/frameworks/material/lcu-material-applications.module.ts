@@ -17,10 +17,12 @@ import {
   MatChipsModule,
   MatCheckboxModule
 } from '@angular/material';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FathymSharedModule } from '@lcu-ide/common';
 
 const modules = [
   FlexLayoutModule,
+  DragDropModule,
   MatExpansionModule,
   MatAutocompleteModule,
   MatButtonModule,

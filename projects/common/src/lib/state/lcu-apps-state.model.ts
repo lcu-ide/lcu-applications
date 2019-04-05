@@ -9,6 +9,10 @@ export class LCUAppsState {
 
   public Apps: Application[];
 
+  public AppPriorities: AppPriorityModel[];
+
+  public AppsNavState?: string;
+
   public DefaultApps: Application[];
 
   public DefaultAppsEnabled?: boolean;
@@ -16,4 +20,16 @@ export class LCUAppsState {
   public IsAppsSettings?: boolean;
 
   public Loading?: boolean;
+}
+
+export class AppPriorityModel {
+  public AppziD: string;
+
+  public IsDefault: boolean;
+
+  public Name: string;
+
+  public Path: string;
+
+  public Priority: number;
 }
