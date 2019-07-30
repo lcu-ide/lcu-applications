@@ -39,10 +39,10 @@ export class AppsManagerElementComponent extends LcuElementComponent<AppsManager
 
   public DAFViewAppFormGroup: FormGroup;
 
-  @ViewChild(MatDrawer)
+  @ViewChild(MatDrawer, { static: false })
   public Drawer: MatDrawer;
 
-  @ViewChild(DropListRef)
+  @ViewChild(DropListRef, { static: false })
   public Drops: DropListRef;
 
   public NewDAFAPIAPIRoot: string;
