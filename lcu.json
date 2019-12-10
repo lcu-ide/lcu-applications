@@ -1,21 +1,23 @@
 {
-  "templates": {
-    "repository": "lowcodeunit-devkit/lcu-cli-templates-core",
-    "scope": "@lcu-ide",
-    "workspace": "lcu-applications"
-  },
-  "config": {
-    "wc": ["wc/lcu-applications.lcu.js"],
-    "solutions": {
-      "lcu-applications": {
-        "element": "lcu-apps-manager-element"
-      }
-    },
-    "elements": {
-      "lcu-content": {
-        "element": "lcu-content-element"
-      }
-    },
-    "flux": {}
-  }
+	"templates": {
+		"repository": "lowcodeunit-devkit/lcu-cli-templates-core",
+		"scope": "@lcu-ide",
+		"workspace": "lcu-applications"
+	},
+	"config": {
+		"wc": [
+			"wc/lcu-applications.lcu.js"
+		],
+		"solutions": {
+			"lcu-applications": {
+				"element": "lcu-apps-manager-element"
+			}
+		},
+		"elements": {
+			"lcu-content": {
+				"element": "lcu-content-element"
+			}
+		},
+		"flux": {}
+	}
 }
