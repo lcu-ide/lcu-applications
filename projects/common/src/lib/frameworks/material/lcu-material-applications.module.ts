@@ -18,7 +18,7 @@ import {
   MatCheckboxModule
 } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FathymSharedModule } from '@lcu-ide/common';
+import { FathymSharedModule } from '@lcu/common';
 
 const modules = [
   FlexLayoutModule,

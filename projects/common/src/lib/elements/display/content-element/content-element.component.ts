@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Injector, OnChanges } from '@angular/core';
-import { LcuElementComponent, LCUElementContext } from '@lcu-ide/common';
+import { LcuElementComponent, LCUElementContext } from '@lcu/common';
 
 export class ContentElementState {
   public Class?: string;

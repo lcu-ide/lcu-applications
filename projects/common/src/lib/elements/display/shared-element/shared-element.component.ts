@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { LCUElementContext, LcuElementComponent } from '@lcu-ide/common';
+import { LCUElementContext, LcuElementComponent } from '@lcu/common';
 import { LazyElementConfig } from '@lowcodeunit/lazy-element';
 
 export class SharedElementState {
