@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
-import { StateManagerContext } from '@lcu-ide/common';
-import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu-ide/common';
+import { StateManagerContext } from '@lcu/common';
+import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu/common';
 import { LCUAppsState, AppPriorityModel } from './lcu-apps-state.model';
 
 @Injectable({

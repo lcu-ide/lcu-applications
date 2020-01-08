@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector, ViewChild, SimpleChanges, OnChanges } from '@angular/core';
-import { LCUElementContext, LcuElementComponent, DAFViewApplicationConfig } from '@lcu-ide/common';
+import { LCUElementContext, LcuElementComponent, DAFViewApplicationConfig } from '@lcu/common';
 import { LcuAppsStateManagerContext } from '../../../state/lcu-apps-state-manager.context';
-import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu-ide/common';
+import { Application, DAFAPIApplicationConfig, DAFApplicationConfig } from '@lcu/common';
 import { LCUAppsState } from '../../../state/lcu-apps-state.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDrawer, MatCheckboxChange } from '@angular/material';

@@ -10,10 +10,19 @@ import {
   SELECTOR_CONTENT_ELEMENT
 } from '@lcu-ide/lcu-applications-common';
 import { LcuApplicationsModule } from '@lcu-ide/lcu-applications-common';
+import { FathymSharedModule, LCUServiceSettings } from '@lcu/common';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, BrowserAnimationsModule, BrowserModule, LcuApplicationsModule]
+  imports: [BrowserModule, BrowserAnimationsModule, FathymSharedModule, LcuApplicationsModule],
+  providers: [
+    {
+      provide: LCUServiceSettings,
+      useValue: FathymSharedModule.DefaultServiceSettings(environment)
+    },
+  ],
+  exports: [LcuApplicationsModule]
 })
 export class AppModule implements DoBootstrap {
   //  Constructors

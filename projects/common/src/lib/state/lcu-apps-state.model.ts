@@ -1,4 +1,4 @@
-import { Application, DAFApplicationConfig } from '@lcu-ide/common';
+import { Application, DAFApplicationConfig } from '@lcu/common';
 
 export class LCUAppsState {
   public ActiveApp: Application;

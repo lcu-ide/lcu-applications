@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { LazyElementModule } from '@lowcodeunit/lazy-element';
-import { FathymSharedModule } from '@lcu-ide/common';
+import { FathymSharedModule } from '@lcu/common';
 import { ContentElementComponent } from './elements/display/content-element/content-element.component';
 import { SharedElementComponent } from './elements/display/shared-element/shared-element.component';
 import { ContentComponent } from './controls/display/content/content.component';
